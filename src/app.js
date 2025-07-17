@@ -25,7 +25,7 @@ jQuery(document).ready(
 				url: serviceAreasObj.url,
 				data: {
 					action: serviceAreasObj.hook,
-					_ajax_nonce: serviceAreasObj.nonce,
+					nonce: serviceAreasObj.nonce,
 					zipcode: zipCode,
 				},
 				success: function (result) {

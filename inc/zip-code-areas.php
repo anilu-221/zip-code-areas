@@ -32,15 +32,15 @@ function zip_ajax_localize() {
 		$csv = array_map( 'str_getcsv', file( $file ) );
 
 		// Get variables.
-		$service_type  = get_field( 'services', 'option' );
-		$cat_cols      = get_field( 'category_columns', 'option' );
-		$services_cols = get_field( 'services_columns', 'option' );
-		$g_success     = get_field( 'general_success_message', 'option' );
-		$g_error       = get_field( 'general_error_message', 'option' );
-		$s_success     = get_field( 'several_success_message', 'option' );
-		$s_error       = get_field( 'several_error_message', 'option' );
-		$btn_txt       = get_field( 'success_button_text', 'option' );
-		$btn_url       = get_field( 'success_button_url', 'option' );
+		$service_type  = get_field( 'services', 'option' ) ? get_field( 'services', 'option' ) : '';
+		$cat_cols      = get_field( 'category_columns', 'option' ) ? get_field( 'category_columns', 'option' ) : '';
+		$services_cols = get_field( 'services_columns', 'option' ) ? get_field( 'services_columns', 'option' ) : '';
+		$g_success     = get_field( 'general_success_message', 'option' ) ? get_field( 'general_success_message', 'option' ) : '';
+		$g_error       = get_field( 'general_error_message', 'option' ) ? get_field( 'general_error_message', 'option' ) : '';
+		$s_success     = get_field( 'several_success_message', 'option' ) ? get_field( 'several_success_message', 'option' ) : '';
+		$s_error       = get_field( 'several_error_message', 'option' ) ? get_field( 'several_error_message', 'option' ) : '';
+		$btn_txt       = get_field( 'success_button_text', 'option' ) ? get_field( 'success_button_text', 'option' ) : '';
+		$btn_url       = get_field( 'success_button_url', 'option' ) ? get_field( 'success_button_url', 'option' ) : '';
 	}
 
 	// Localize File.
@@ -66,12 +66,16 @@ add_action( 'wp_enqueue_scripts', 'zip_ajax_localize', 25 );
 /**AJAX Function */
 function zip_service_area() {
 	// Nonce.
-	// check_ajax_referer( 'sa_nonce' ); //phpcs:ignore.
+	check_ajax_referer( 'sa_nonce', 'nonce' );
 
 	// Variables.
-	$zip_code = $_POST['zipcode']; //phpcs:ignore
-	$zip_file = get_field( 'zip_code_csv_file', 'option' );
-	echo $zip_code; //phpcs:ignore
+	$zip_code = '';
+	if ( isset( $_POST['zipcode'] ) ) {
+		$zip_code = sanitize_text_field( $_POST['zipcode'] ); //phpcs:ignore.
+	}
+
+	echo esc_html( $zip_code );
+
 	// Die.
 	wp_die();
 }
