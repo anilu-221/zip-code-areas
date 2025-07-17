@@ -1,0 +1,18 @@
+#sa-form{
+	display: flex;
+	align-items: end;
+	gap: 1rem;
+}
+.zip-form-btn{
+	color: #fff;
+}
+
+.zip-form-input{
+	display: flex;
+	flex-direction: column;
+}
+
+.zip-form-fields{
+	padding: .5rem .75rem !important;
+	font-size: 1rem;
+}
