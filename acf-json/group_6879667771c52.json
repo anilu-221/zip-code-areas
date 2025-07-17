@@ -1,0 +1,341 @@
+{
+    "key": "group_6879667771c52",
+    "title": "Zip Code Shortcode Settings",
+    "fields": [
+        {
+            "key": "field_687966782b6d1",
+            "label": "CSV File",
+            "name": "csv_file",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "CSV File with: <br>\r\n1 column:  zip<br>\r\n2 column: area<br>\r\n.<br>\r\n.<br>\r\nextra column1: category_column1<br>\r\nextra column2: category_column2<br>\r\n.<br>\r\nextra column1: service_column3<br>\r\nextra column2: service_column4<br>\r\n.<br>\r\nIf you add several services, add a column per category, and afterwards a column per service.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_6879673f2b6d3",
+            "label": "Services",
+            "name": "services",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "General Service": "General Service",
+                "Several Services": "Several Services"
+            },
+            "default_value": "General Service",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_68796aaede209",
+            "label": "Category Columns",
+            "name": "category_columns",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Categories are shown in the dropdown. Ex: fencing, sanitation, etc.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6879673f2b6d3",
+                        "operator": "==",
+                        "value": "Several Services"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add category",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_68796aaede20a",
+                    "label": "Category title",
+                    "name": "category_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_68796aaede209"
+                }
+            ]
+        },
+        {
+            "key": "field_6879683f2b6d9",
+            "label": "Services Columns",
+            "name": "services_columns",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Individual services or products. Ex: iron fencing, toilets, hot sink stations, etc.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6879673f2b6d3",
+                        "operator": "==",
+                        "value": "Several Services"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add service",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_687968542b6da",
+                    "label": "Service title",
+                    "name": "service_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6879683f2b6d9"
+                }
+            ]
+        },
+        {
+            "key": "field_687966fb2b6d2",
+            "label": "General service success message",
+            "name": "general_success_message",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6879673f2b6d3",
+                        "operator": "==",
+                        "value": "General Service"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_687967932b6d4",
+            "label": "General service error message",
+            "name": "general_error_message",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6879673f2b6d3",
+                        "operator": "==",
+                        "value": "General Service"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_687967c22b6d5",
+            "label": "Several services success message",
+            "name": "several_success_message",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6879673f2b6d3",
+                        "operator": "==",
+                        "value": "Several Services"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6879680b2b6d6",
+            "label": "Several services error message",
+            "name": "several_error_message",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6879673f2b6d3",
+                        "operator": "==",
+                        "value": "Several Services"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6879682a2b6d7",
+            "label": "Success button text",
+            "name": "success_button_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_687968342b6d8",
+            "label": "Success button url",
+            "name": "success_button_url",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "zip-code-areas-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1752787872
+}

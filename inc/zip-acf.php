@@ -32,7 +32,7 @@ function zip_acf_add_options_page() {
 				'capability'      => 'manage_options',
 				'redirect'        => false,
 				'icon_url'        => 'dashicons-location-alt',
-				'position'        => 20,
+				'position'        => 1,
 				'update_button'   => __( 'Update Settings', 'zip' ),
 				'updated_message' => __( 'Settings updated successfully.', 'zip' ),
 			)
