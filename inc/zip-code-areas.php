@@ -41,25 +41,27 @@ function zip_ajax_localize() {
 		$s_error       = get_field( 'several_error_message', 'option' ) ? get_field( 'several_error_message', 'option' ) : '';
 		$btn_txt       = get_field( 'success_button_text', 'option' ) ? get_field( 'success_button_text', 'option' ) : '';
 		$btn_url       = get_field( 'success_button_url', 'option' ) ? get_field( 'success_button_url', 'option' ) : '';
+
+		// Localize File.
+		wp_localize_script(
+			'zip_scripts',
+			'serviceAreasFile',
+			array(
+				'zipFile'        => $csv,
+				'serviceType'    => $service_type,
+				'catColumns'     => $cat_cols,
+				'serviceColumns' => $services_cols,
+				'gSuccess'       => $g_success,
+				'gError'         => $g_error,
+				'sSuccess'       => $s_success,
+				'sError'         => $s_error,
+				'btnText'        => $btn_txt,
+				'btnUrl'         => $btn_url,
+			)
+		);
 	}
 
-	// Localize File.
-	wp_localize_script(
-		'zip_scripts',
-		'serviceAreasFile',
-		array(
-			'zipFile'        => $csv,
-			'serviceType'    => $service_type,
-			'catColumns'     => $cat_cols,
-			'serviceColumns' => $services_cols,
-			'gSuccess'       => $g_success,
-			'gError'         => $g_error,
-			'sSuccess'       => $s_success,
-			'sError'         => $s_error,
-			'btnText'        => $btn_txt,
-			'btnUrl'         => $btn_url,
-		)
-	);
+
 }
 add_action( 'wp_enqueue_scripts', 'zip_ajax_localize', 25 );
 
