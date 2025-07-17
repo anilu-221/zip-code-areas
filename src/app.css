@@ -7,6 +7,10 @@
 	color: #fff;
 }
 
+.zip-button{
+	color: #fff !important;;
+}
+
 .zip-form-input{
 	display: flex;
 	flex-direction: column;

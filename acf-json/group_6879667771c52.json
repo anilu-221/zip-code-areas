@@ -8,7 +8,7 @@
             "name": "csv_file",
             "aria-label": "",
             "type": "file",
-            "instructions": "CSV File with: <br>\r\n1 column:  zip<br>\r\n2 column: area<br>\r\n.<br>\r\n.<br>\r\nextra column1: category_column1<br>\r\nextra column2: category_column2<br>\r\n.<br>\r\nextra column1: service_column3<br>\r\nextra column2: service_column4<br>\r\n.<br>\r\nIf you add several services, add a column per category, and afterwards a column per service.",
+            "instructions": "CSV File with: <br>\r\n1 column:  zip<br>\r\n2 column: area<br>\r\n.<br>\r\n.<br>\r\n.<br>\r\nextra column1: service_column1<br>\r\nextra column2: service_column2<br>\r\nextra column3: service_column3<br>\r\n.<br>\r\nIf you add several services, add a column per service",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -128,7 +128,7 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "row",
+            "layout": "table",
             "pagination": 0,
             "min": 0,
             "max": 0,
@@ -140,6 +140,28 @@
                     "key": "field_687968542b6da",
                     "label": "Service title",
                     "name": "service_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6879683f2b6d9"
+                },
+                {
+                    "key": "field_6879795f61037",
+                    "label": "Service Category",
+                    "name": "service_category",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -219,64 +241,6 @@
             "append": ""
         },
         {
-            "key": "field_687967c22b6d5",
-            "label": "Several services success message",
-            "name": "several_success_message",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6879673f2b6d3",
-                        "operator": "==",
-                        "value": "Several Services"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_6879680b2b6d6",
-            "label": "Several services error message",
-            "name": "several_error_message",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6879673f2b6d3",
-                        "operator": "==",
-                        "value": "Several Services"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_6879682a2b6d7",
             "label": "Success button text",
             "name": "success_button_text",
@@ -337,5 +301,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1752787872
+    "modified": 1752795214
 }
