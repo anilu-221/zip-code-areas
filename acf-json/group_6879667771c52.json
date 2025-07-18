@@ -3,6 +3,24 @@
     "title": "Zip Code Shortcode Settings",
     "fields": [
         {
+            "key": "field_68798e405bd22",
+            "label": "Shortcode",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Shortcode: [zip_code_areas]",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
             "key": "field_687966782b6d1",
             "label": "CSV File",
             "name": "csv_file",
@@ -301,5 +319,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1752795214
+    "modified": 1752796783
 }

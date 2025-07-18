@@ -27,7 +27,7 @@ function zip_ajax_localize() {
 
 	// ACF Field (localize uploaded csv file).
 	$csv = false;
-	if ( $file ) {
+	if ( get_field( 'csv_file', 'option' ) ) {
 		// Convert CSV to array.
 		$csv = array_map( 'str_getcsv', file( $file ) );
 
@@ -60,7 +60,6 @@ function zip_ajax_localize() {
 			)
 		);
 	}
-
 
 }
 add_action( 'wp_enqueue_scripts', 'zip_ajax_localize', 25 );
