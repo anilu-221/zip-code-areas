@@ -21,7 +21,7 @@ $categories = get_field( 'category_columns', 'option' );
 		<!--ZIP CODE-->
 		<div class="zip-form-input">
 			<label for="zipcode"><strong>Enter your zipcode: </strong> </label>
-			<input class="zip-form-fields" style="width:200px" type="text" name="zipcode" id="zipcode" required="required">
+			<input class="zip-form-fields" type="text" name="zipcode" id="zipcode" required="required">
 		</div>
 
 
@@ -49,7 +49,7 @@ $categories = get_field( 'category_columns', 'option' );
 		?>
 
 		<!--BUTTON--> 
-		<button class="zip-form-btn" type="submit" value="Enter"> Enter </button>
+		<button class="zip-form-btn" type="submit" value="Enter"> CHECK RESULTS </button>
 	</form>
 </div>
 

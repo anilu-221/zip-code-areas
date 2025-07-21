@@ -40,7 +40,7 @@ jQuery(document).ready(
 										$('#sa-result').html(`
 
 										<br>
-										<p style="color: #259806; font-weight: 700;">${gSuccess} ${value[0]} in ${value[1] }.</p>
+										<p style="font-weight: 700;">${gSuccess} ${value[0]} in ${value[1] }.</p>
 										<a class="button" href="${btnUrl}"> ${btnText} </a>
 
 										`);
@@ -98,7 +98,7 @@ jQuery(document).ready(
 							if ( servicesArray.length > 1 ) {
 								if ( 'all' == category ) {
 									$('#sa-result').html(`
-										<p style="margin:12px 0;"> <span style="color: #259806;">We offer the following services in <span style="font-weight:700;">${areaName }</span>: </span></p>
+										<p style="margin:12px 0;"> <span>We offer the following services in <span style="font-weight:700;">${areaName }</span>: </span></p>
 										<ul style="margin-bottom:12px">
 										${servicesArray.map(service => `<li>${service}</li>`).join('')}
 										</ul>
@@ -106,7 +106,7 @@ jQuery(document).ready(
 									`);
 								} else {
 									$('#sa-result').html(`
-										<p style="margin:12px 0;"> <span style="color: #259806;">We offer the following <span style="font-weight:700;">${category }</span> services in <span style="font-weight:700;">${areaName }</span>: </span></p>
+										<p style="margin:12px 0;"> <span>We offer the following <span style="font-weight:700;">${category }</span> services in <span style="font-weight:700;">${areaName }</span>: </span></p>
 										<ul>
 										${servicesArray.map(service => `<li>${service}</li>`).join('')}
 										</ul>

@@ -3,10 +3,13 @@
 	align-items: end;
 	gap: 1rem;
 	flex-wrap: wrap;
+	justify-content: space-between;
+    
 }
 .zip-form-btn{
 	color: #fff;
 	width: 100%;
+	background-color: #232222;
 }
 
 .zip-button{
@@ -14,6 +17,7 @@
 }
 
 .zip-form-input{
+	width: calc(50% - .5rem);
 	display: flex;
 	flex-direction: column;
 }
