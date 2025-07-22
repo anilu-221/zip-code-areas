@@ -11,132 +11,100 @@ jQuery(document).ready(
 		var gError         = serviceAreasFile.gError;
 		var btnText        = serviceAreasFile.btnText;
 		var btnUrl         = serviceAreasFile.btnUrl;
-		
-		
-		// Zip Form.
-		$( '#sa-form' ).on( 'submit', function (e) {
-			e.preventDefault();
 
-			//Variables
-			var zipCode = $( '#zipcode' ).val();
+		$('[data-zip-form]').each(function () {
+			const $wrapper   = $(this);
+			const $form      = $wrapper.find('[data-sa-form]');
+			const $zipInput  = $wrapper.find('[data-zip-input]');
+			const $select    = $wrapper.find('[data-service-select]');
+			const $resultdiv = $wrapper.find('[data-result]');
+			$resultdiv.html('Test output here...');
+			$form.on('submit', function (e) {
+				e.preventDefault();
+				const zipCode  = $zipInput.val();
 
-			jQuery.ajax({
-				type: 'POST',
-				url: serviceAreasObj.url,
-				data: {
-					action: serviceAreasObj.hook,
-					nonce: serviceAreasObj.nonce,
-					zipcode: zipCode,
-				},
-				success: function (result) {
-					//If there is an uploaded file
-					if( csvArray != false ){
-						// General Service.
-						if ( 'General Service' == serviceType ) {
-							for ( let value of csvArray ) {
-									//If zipcode is found
-									if( value[0] == result ){
-
-										$('#sa-result').html(`
-
-										<br>
-										<p style="font-weight: 700;">${gSuccess} ${value[0]} in ${value[1] }.</p>
-										<a class="button" href="${btnUrl}"> ${btnText} </a>
-
+				$.ajax({
+					type: 'POST',
+					url: serviceAreasObj.url,
+					data: {
+						action: serviceAreasObj.hook,
+						nonce: serviceAreasObj.nonce,
+						zipcode: zipCode,
+					},
+					success: function (result) {
+						if (csvArray != false) {
+							if (serviceType === 'General Service') {
+								let found = false;
+								for (let value of csvArray) {
+									if (value[0] == result) {
+										$resultdiv.html(`
+											<p style="font-weight: 700;">${gSuccess} ${value[0]} in ${value[1]}.</p>
+											<a class="button" href="${btnUrl}">${btnText}</a>
 										`);
-
+										found = true;
 										break;
-									}   else{
-										//If it is not found
-										$('#sa-result').html(`<br><p> ${gError} </p>`);
 									}
-							}
-						}
+								}
+								if (!found) {
+									$resultdiv.html(`<p>${gError}</p>`);
+								}
+							} else if (serviceType === 'Several Services') {
+								let category = 'all';
+								if ($select.length) {
+									category = $select.val();
+								}
+								let columns       = csvArray[0];
+								let servicesArray = [];
+								let areaName      = '';
 
-						// Several Services.
-						if ( 'Several Services' == serviceType ) {
-							let columns  = csvArray[0];
-							let category = formSelect.val();
-							let servicesArray = [];
-							let areaName = '';
+								for (let values of csvArray) {
+									if (values[0] == result) {
+										areaName = values[1];
+										for (let i = 0; i < values.length; i++) {
+											if (values[i] == 1) {
+												let serviceName = columns[i];
+												let capService  = serviceName.charAt(0).toUpperCase() + serviceName.slice(1);
 
-							// Populate services array based on category.
-							for ( let values of csvArray ) {
-								if( values[0] == result ) {
-									areaName = values[1];
-									let index = 0;
-									for ( let item of values ) {
-										if ( item == 1) {
-											let serviceName = columns[index];
-											if ( 'all' == category ) {
-												let capService = serviceName.charAt(0).toUpperCase() + serviceName.slice(1);
-												servicesArray.push( capService );
-											} else {
-												for ( let serviceField of serviceColumns ) {
-													let serviceCategory = serviceField['service_category'];
-													if ( serviceCategory == category ) {
-														if ( serviceName == serviceField['service_title'] ) {
-															let capService = serviceName.charAt(0).toUpperCase() + serviceName.slice(1);
-															servicesArray.push( capService );
+												if (category === 'all') {
+													servicesArray.push(capService);
+												} else {
+													for (let serviceField of serviceColumns) {
+														if (
+															serviceField.service_category === category &&
+															serviceField.service_title === serviceName
+														) {
+															servicesArray.push(capService);
 														}
-
 													}
-													
-
 												}
 											}
 										}
-										index++;
-										
 									}
-									
 								}
-							}
 
-							// Add results to HTML.
-							// Check lenght of services Array
-							if ( servicesArray.length > 1 ) {
-								if ( 'all' == category ) {
-									$('#sa-result').html(`
-										<p style="margin:12px 0;"> <span>We offer the following services in <span style="font-weight:700;">${areaName }</span>: </span></p>
-										<ul style="margin-bottom:12px">
-										${servicesArray.map(service => `<li>${service}</li>`).join('')}
-										</ul>
-										<a class="button zip-button" href="${btnUrl}"> ${btnText} </a>
+								if (servicesArray.length > 0) {
+									///////
+									let listItems = servicesArray.map(s => `<li>${s}</li>`).join('');
+									let categoryText = category === 'all' ? '' : `<span style="font-weight:700;">${category}</span> `;
+									$resultdiv.html(`
+										<p style="margin:12px 0;">We offer the following ${categoryText}services in <span style="font-weight:700;">${areaName}</span>:</p>
+										<ul>${listItems}</ul>
+										<a class="button zip-button" href="${btnUrl}">${btnText}</a>
 									`);
 								} else {
-									$('#sa-result').html(`
-										<p style="margin:12px 0;"> <span>We offer the following <span style="font-weight:700;">${category }</span> services in <span style="font-weight:700;">${areaName }</span>: </span></p>
-										<ul>
-										${servicesArray.map(service => `<li>${service}</li>`).join('')}
-										</ul>
-										<a class="button zip-button" href="${btnUrl}"> ${btnText} </a>
-									`);
+									let msg = category === 'all'
+										? `We don't offer services in ${result}.`
+										: `We don't offer ${category} services in ${result}.`;
+									$resultdiv.html(`<p style="margin:12px 0;">${msg}</p>`);
 								}
-							} else {
-								if ( 'all' == category ) {
-									$('#sa-result').html(`
-											<p style="margin:12px 0;">We don't offer services in ${result }.</p>
-									`);
-								} else {
-									$('#sa-result').html(`
-											<p style="margin:12px 0;">We don't offer ${category } services in ${result }.</p>
-									`);
-								}
-
 							}
-
-	
-							
-
+						} else {
+							$resultdiv.html('ERROR: upload csv file with zip codes');
 						}
 					}
-					else{
-						$('#sa-result').html('ERROR: upload csv file with zip codes');
-					}
-
-				}
+				});
 			});
 		});
+
 	}
 );
