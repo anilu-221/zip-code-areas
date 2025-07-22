@@ -18,7 +18,6 @@ jQuery(document).ready(
 			const $zipInput  = $wrapper.find('[data-zip-input]');
 			const $select    = $wrapper.find('[data-service-select]');
 			const $resultdiv = $wrapper.find('[data-result]');
-			$resultdiv.html('Test output here...');
 			$form.on('submit', function (e) {
 				e.preventDefault();
 				const zipCode  = $zipInput.val();
@@ -65,7 +64,10 @@ jQuery(document).ready(
 										for (let i = 0; i < values.length; i++) {
 											if (values[i] == 1) {
 												let serviceName = columns[i];
-												let capService  = serviceName.charAt(0).toUpperCase() + serviceName.slice(1);
+												let capService = serviceName
+													.split(' ')
+													.map(word => word.charAt(0).toUpperCase() + word.slice(1))
+													.join(' ');
 
 												if (category === 'all') {
 													servicesArray.push(capService);

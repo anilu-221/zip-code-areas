@@ -10,9 +10,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Variables.
-$file       = get_field( 'csv_file', 'option' );
-$services   = get_field( 'services', 'option' );
-$categories = get_field( 'category_columns', 'option' );
+$file              = get_field( 'csv_file', 'option' );
+$services          = get_field( 'services', 'option' );
+$categories        = get_field( 'category_columns', 'option' );
+$input_label       = get_field( 'input_label', 'option' ) ? get_field( 'input_label', 'option' ) : '';
+$input_placeholder = get_field( 'input_placeholder', 'option' ) ? get_field( 'input_placeholder', 'option' ) : '';
+$category_label    = get_field( 'category_label', 'option' ) ? get_field( 'category_label', 'option' ) : '';
+$search_btn_text   = get_field( 'search_btn_text', 'option' ) ? get_field( 'search_btn_text', 'option' ) : '';
 ?>
 
 <!--Form--> 
@@ -20,8 +24,8 @@ $categories = get_field( 'category_columns', 'option' );
 	<form method="post" class="sa-form" data-sa-form>
 		<!--ZIP CODE-->
 		<div class="zip-form-input">
-			<label for="zipcode"><strong>Enter your zipcode: </strong> </label>
-			<input class="zip-form-fields" type="text" name="zipcode" required  data-zip-input>
+			<label for="zipcode"><strong><?php echo esc_html( $input_label ); ?></strong> </label>
+			<input class="zip-form-fields" type="text" name="zipcode" required  data-zip-input placeholder="<?php echo esc_html( $input_placeholder ); ?>">
 		</div>
 
 
@@ -30,7 +34,7 @@ $categories = get_field( 'category_columns', 'option' );
 		if ( 'Several Services' === $services ) {
 			?>
 			<div class="zip-form-input">
-				<label for="sa-form-select"><strong>Service Type</strong> </label>
+				<label for="sa-form-select"><strong><?php echo esc_html( $category_label ); ?></strong> </label>
 				<select class="zip-form-fields" name="sa-form-select" data-service-select>
 					<option value="all">All</option>
 					<?php
@@ -49,7 +53,7 @@ $categories = get_field( 'category_columns', 'option' );
 		?>
 
 		<!--BUTTON--> 
-		<button class="zip-form-btn" type="submit" value="Enter"> CHECK RESULTS </button>
+		<button class="zip-form-btn" type="submit" value="Enter"><?php echo esc_html( $search_btn_text ); ?></button>
 	</form>
 
 	<!--AJAX Result--> 
