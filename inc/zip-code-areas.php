@@ -87,7 +87,7 @@ add_action( 'wp_ajax_zip_service_area', 'zip_service_area' );
 /**Shortcode Function*/
 function zip_service_areas_shortcode() {
 	ob_start();
-	require_once ZIP_PLUGIN_PATH . '/template-parts/service-areas.php';
+	include ZIP_PLUGIN_PATH . '/template-parts/service-areas.php';
 	return ob_get_clean();
 }
 
