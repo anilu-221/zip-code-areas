@@ -56,10 +56,12 @@ jQuery(document).ready(
 								let columns       = csvArray[0];
 								let servicesArray = [];
 								let areaName      = '';
+								let areaLink      = null;
 
 								for (let values of csvArray) {
 									if (values[0] == result) {
 										areaName = values[1];
+										areaLink = values[2];
 										for (let i = 0; i < values.length; i++) {
 											if (values[i] == 1) {
 												let serviceName = columns[i];
@@ -83,11 +85,18 @@ jQuery(document).ready(
 								}
 
 								if (servicesArray.length > 0) {
+										if (areaLink) {
+											// Add protocol if it's missing
+											if (!/^https?:\/\//i.test(areaLink)) {
+												areaLink = 'https://' + areaLink;
+											}
+											areaName = '<a href="' + areaLink + '">' + areaName + '</a>';
+										}
 									///////
 									let listItems = servicesArray.map(s => `<li>${s}</li>`).join('');
 									let categoryText = category === 'all' ? '' : `<span style="font-weight:700;">${category}</span> `;
 									$resultdiv.html(`
-										<p style="margin:12px 0;">We offer the following ${categoryText}services in <span style="font-weight:700;">${areaName}</span>:</p>
+										<p style="margin:12px 0;">We offer the following ${categoryText}services in <span style="font-weight:700;">${result} ${areaName}</span>:</p>
 										<ul>${listItems}</ul>
 										<a class="button zip-button" href="${btnUrl}">${btnText}</a>
 									`);

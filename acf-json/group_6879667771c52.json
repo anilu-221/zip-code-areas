@@ -3,11 +3,11 @@
     "title": "Zip Code Shortcode Settings",
     "fields": [
         {
-            "key": "field_68798e405bd22",
-            "label": "Shortcode",
+            "key": "field_68801109a3ba9",
+            "label": "CSV File",
             "name": "",
             "aria-label": "",
-            "type": "message",
+            "type": "tab",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,9 +16,9 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Shortcode: [zip_code_areas]",
-            "new_lines": "wpautop",
-            "esc_html": 0
+            "placement": "left",
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_687966782b6d1",
@@ -26,7 +26,7 @@
             "name": "csv_file",
             "aria-label": "",
             "type": "file",
-            "instructions": "CSV File with: <br>\r\n1 column:  zip<br>\r\n2 column: area<br>\r\n.<br>\r\n.<br>\r\n.<br>\r\nextra column1: service_column1<br>\r\nextra column2: service_column2<br>\r\nextra column3: service_column3<br>\r\n.<br>\r\nIf you add several services, add a column per service",
+            "instructions": "CSV File with: <br>\r\n1 column:  zip<br>\r\n2 column: area<br>\r\n3 column: link<br>\r\n.<br>\r\n.<br>\r\n.<br>\r\nextra column1: service_column1<br>\r\nextra column2: service_column2<br>\r\nextra column3: service_column3<br>\r\n.<br>\r\nIf you add several services, add a column per service",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -40,6 +40,24 @@
             "max_size": "",
             "mime_types": "",
             "allow_in_bindings": 0
+        },
+        {
+            "key": "field_68801156a3bab",
+            "label": "Settings",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_6879673f2b6d3",
@@ -201,6 +219,87 @@
             ]
         },
         {
+            "key": "field_68801184a3bac",
+            "label": "Editable fields",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6880122eeb01b",
+            "label": "Input zip code label",
+            "name": "input_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Enter your zipcode:",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_68801242eb01c",
+            "label": "Category dropwdown label",
+            "name": "category_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Service Type",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_68801292eb01d",
+            "label": "Search button text",
+            "name": "search_btn_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "CHECK RESULTS",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_687966fb2b6d2",
             "label": "General service success message",
             "name": "general_success_message",
@@ -299,6 +398,42 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_68801144a3baa",
+            "label": "Instructions",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_68798e405bd22",
+            "label": "Shortcode",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Shortcode: [zip_code_areas]",
+            "new_lines": "wpautop",
+            "esc_html": 0
         }
     ],
     "location": [
@@ -319,5 +454,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1752796783
+    "modified": 1753224069
 }
