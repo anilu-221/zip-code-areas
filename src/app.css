@@ -27,3 +27,13 @@
 	padding: .5rem .75rem !important;
 	font-size: 1rem;
 }
+
+.zip-form-input label{
+	font-size: 1.25rem;
+}	
+
+@media (max-width: 500px) {
+	.zip-form-input label{
+		font-size: .85rem;
+	}	
+}
