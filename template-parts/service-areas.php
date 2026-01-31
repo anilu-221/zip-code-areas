@@ -25,7 +25,7 @@ $search_btn_text   = get_field( 'search_btn_text', 'option' ) ? get_field( 'sear
 		<!--ZIP CODE-->
 		<div class="zip-form-input">
 			<label for="zipcode"><strong><?php echo esc_html( $input_label ); ?></strong> </label>
-			<input class="zip-form-fields" type="text" name="zipcode" required  data-zip-input placeholder="<?php echo esc_html( $input_placeholder ); ?>">
+			<input id="zipcode" class="zip-form-fields" type="text" name="zipcode" required  data-zip-input placeholder="<?php echo esc_html( $input_placeholder ); ?>">
 		</div>
 
 
@@ -35,7 +35,7 @@ $search_btn_text   = get_field( 'search_btn_text', 'option' ) ? get_field( 'sear
 			?>
 			<div class="zip-form-input">
 				<label for="sa-form-select"><strong><?php echo esc_html( $category_label ); ?></strong> </label>
-				<select class="zip-form-fields" name="sa-form-select" data-service-select>
+				<select id="sa-form-select" class="zip-form-fields" name="sa-form-select" data-service-select>
 					<option value="all">All</option>
 					<?php
 					foreach ( $categories as $category ) {

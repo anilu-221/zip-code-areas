@@ -31,11 +31,12 @@ jQuery(document).ready(
 						zipcode: zipCode,
 					},
 					success: function (result) {
+						const zip = String(result).trim().substring(0, 5);
 						if (csvArray != false) {
 							if (serviceType === 'General Service') {
 								let found = false;
 								for (let value of csvArray) {
-									if (value[0] == result) {
+									if (values[0] == zip) {
 										$resultdiv.html(`
 											<p style="font-weight: 700;">${gSuccess} ${value[0]} in ${value[1]}.</p>
 											<a class="button" href="${btnUrl}">${btnText}</a>
@@ -58,7 +59,7 @@ jQuery(document).ready(
 								let areaLink      = null;
 
 								for (let values of csvArray) {
-									if (values[0] == result) {
+									if (values[0] == zip) {
 										areaName = values[1];
 										areaLink = values[2];
 										for (let i = 0; i < values.length; i++) {
